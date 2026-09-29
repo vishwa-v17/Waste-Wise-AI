@@ -83,8 +83,8 @@ class Settings(BaseSettings):
         else:
             origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
 
-        # Security hardening: Disallow wildcard '*' in origins when credentials are used
-        sanitized = [origin for origin in origins if origin != "*"]
+        # Security hardening: Disallow wildcard '*' in origins when credentials are used, and strip trailing slashes
+        sanitized = [origin.rstrip("/") for origin in origins if origin != "*"]
         return sanitized if sanitized else ["http://localhost:5173", "http://127.0.0.1:5173"]
 
 settings = Settings()
