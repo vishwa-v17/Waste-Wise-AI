@@ -1,0 +1,6 @@
+backend/
+.env*
+Dockerfile*
+docker-compose.yml
+render.yaml
+SECURITY_AUDIT.md
