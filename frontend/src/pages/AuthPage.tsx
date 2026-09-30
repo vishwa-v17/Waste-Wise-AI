@@ -13,6 +13,7 @@ import {
   ArrowRight,
   ShieldCheck
 } from 'lucide-react';
+import { Footer } from '../components/Footer';
 
 export const AuthPage: React.FC = () => {
   const { login, register } = useAuth();
@@ -58,8 +59,9 @@ export const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-between">
+      <div className="flex-1 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
         {/* Brand Icon */}
         <div className="mx-auto w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/20 text-white mb-3">
           <Flame className="w-6 h-6 text-white" />
@@ -232,6 +234,8 @@ export const AuthPage: React.FC = () => {
           </div>
         </div>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 };
