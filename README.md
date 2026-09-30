@@ -1,4 +1,4 @@
-# WasteWise AI — AI-Powered Food Waste Prevention & Inventory Prioritization System
+# WasteWise AI — AI-Based Food Waste Prevention & Inventory Prioritization System
 
 > **An intelligent AI/ML decision-support platform designed to eliminate food waste, prevent financial losses, and prioritize consumption across households, restaurants, cafeterias, hostels, and grocery businesses.**
 
