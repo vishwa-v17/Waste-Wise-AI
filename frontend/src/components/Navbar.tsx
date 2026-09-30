@@ -96,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onExportPdf, isExportingPdf }) =
             </span>
           </div>
           <p className="text-[11px] text-slate-500 font-medium hidden sm:block">
-            AI-Powered Expiry & Food Waste Prioritization
+            AI-Based Expiry & Food Waste Prioritization
           </p>
         </div>
       </div>
