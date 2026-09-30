@@ -37,6 +37,17 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
 
   if (response.status === 401) {
     removeAuthToken();
+    if (endpoint.includes('/auth/login') || endpoint.includes('/auth/register')) {
+      let errorDetail = 'Incorrect email or password.';
+      try {
+        const raw = await response.text();
+        const errJson = JSON.parse(raw);
+        if (errJson.detail) {
+          errorDetail = typeof errJson.detail === 'string' ? errJson.detail : JSON.stringify(errJson.detail);
+        }
+      } catch {}
+      throw new Error(errorDetail);
+    }
     if (!window.location.pathname.includes('/login')) {
       window.location.href = '/login';
     }

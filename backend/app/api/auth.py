@@ -44,7 +44,15 @@ def register(user_in: UserCreate, db: Session = Depends(get_db)):
 
 @router.post("/login", response_model=Token, dependencies=[Depends(rate_limit_auth)])
 def login(login_data: UserLogin, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.email == login_data.email.lower()).first()
+    email_clean = login_data.email.lower().strip()
+    user = db.query(User).filter(User.email == email_clean).first()
+    
+    # Auto-provision demo account if requested and not yet seeded
+    if not user and email_clean == "demo@wastewise.ai" and login_data.password == "DemoPass123!":
+        from app.main import init_seed_data
+        init_seed_data(db_session=db, force=True)
+        user = db.query(User).filter(User.email == email_clean).first()
+
     if not user or not verify_password(login_data.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

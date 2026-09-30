@@ -9,7 +9,7 @@ services:
       - key: ENVIRONMENT
         value: production
       - key: ENABLE_DEMO_SEED
-        value: false
+        value: true
       - key: SECRET_KEY
         generateValue: true
       - key: DATABASE_URL

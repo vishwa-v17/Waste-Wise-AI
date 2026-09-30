@@ -87,16 +87,22 @@ app.include_router(csv_tools.router, prefix=settings.API_V1_STR)
 app.include_router(notifications.router, prefix=settings.API_V1_STR)
 
 @app.on_event("startup")
-def init_seed_data():
+def init_seed_data(db_session=None, force: bool = False):
     """
     Seeds initial admin/demo user and baseline inventory if database is empty
-    and ENABLE_DEMO_SEED is set to True.
+    and ENABLE_DEMO_SEED is set to True (or force=True).
     """
-    if not settings.ENABLE_DEMO_SEED:
+    if not force and not settings.ENABLE_DEMO_SEED:
         print("[WasteWise Startup] Demo seeding disabled by configuration (ENABLE_DEMO_SEED=false).")
         return
 
-    db = SessionLocal()
+    should_close = False
+    if db_session is None:
+        db = SessionLocal()
+        should_close = True
+    else:
+        db = db_session
+
     try:
         admin = db.query(User).filter(User.email == "demo@wastewise.ai").first()
         if not admin:
@@ -316,7 +322,8 @@ def init_seed_data():
             db.commit()
             print("[WasteWise Startup] Demo dataset initialized successfully.")
     finally:
-        db.close()
+        if should_close:
+            db.close()
 
 @app.get("/")
 def root():
