@@ -70,7 +70,7 @@ export const AuthPage: React.FC = () => {
           WasteWise <span className="text-emerald-500">AI</span>
         </h2>
         <p className="text-xs text-slate-500 mt-1">
-          AI-Powered Food Expiry & Waste Prioritization System
+          AI-Based Food Expiry & Waste Prioritization System
         </p>
       </div>
 
