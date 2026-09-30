@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <p className="text-[11px] text-slate-400 font-medium">
-          WasteWise AI &copy; {new Date().getFullYear()} &bull; AI-Powered Food Waste Prevention &amp; Inventory Prioritization
+          WasteWise AI &copy; {new Date().getFullYear()} &bull; AI-Based Food Waste Prevention &amp; Inventory Prioritization
         </p>
       </div>
     </footer>
