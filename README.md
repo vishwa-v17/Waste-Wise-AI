@@ -59,9 +59,7 @@ Food waste is a major global ecological and financial problem. Households, resta
                    LLM Explanation / Local Fallback
                                ↓
                    Interactive Web Dashboard
-```
 
-```mermaid
 
 
 ---
