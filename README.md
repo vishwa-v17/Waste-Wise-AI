@@ -62,44 +62,7 @@ Food waste is a major global ecological and financial problem. Households, resta
 ```
 
 ```mermaid
-flowchart TD
-    subgraph Frontend ["Frontend Layer (React 18 + Vite + TypeScript + Tailwind CSS)"]
-        UI_Dash["Executive Dashboard & Charts"]
-        UI_Queue["Smart Priority Queue"]
-        UI_Inv["Inventory CRUD & Barcode Lookup"]
-        UI_Analytics["Waste Analytics & Savings Calculator"]
-        UI_Sim["What-If Scenario Simulator"]
-        UI_Purchases["Smart Replenishment Advisor"]
-        UI_Logger["Waste & Consumption Ledger"]
-        UI_AI["Ask WasteWise AI & NL Search"]
-        UI_ML["Model Hub & Benchmark Hub"]
-    end
 
-    subgraph Backend ["Backend Layer (FastAPI + Python 3.10+)"]
-        API_Auth["JWT Auth & Role-Based Access"]
-        API_Inv["Inventory & Barcode Gateway"]
-        
-        subgraph Decision_Engines ["Decision & ML Engines"]
-            Eng_Risk["Waste Risk Engine (0-100 Score)"]
-            Eng_Priority["Dynamic Priority Ranker"]
-            Eng_ML["Demand Predictor (Champion Pipeline)"]
-            Eng_Rec["Action Recommendation Engine"]
-            Eng_Sim["What-If Simulator Service"]
-            Eng_NLP["NL Query Parser & Grounded Explainer"]
-        end
-
-        API_Reports["ReportLab PDF Generator"]
-    end
-
-    subgraph Storage ["Data Layer"]
-        DB[(PostgreSQL in Production / SQLite in Local Dev)]
-        Models_Store["Trained Champion Pipeline (.joblib)"]
-    end
-
-    Frontend -->|HTTP / REST API| Backend
-    Backend --> DB
-    Backend --> Models_Store
-```
 
 ---
 
